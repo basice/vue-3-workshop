@@ -1,10 +1,12 @@
 <script>
+import BaseCounter from "./components/base-counter.vue";
+
 export default {
+  components: {
+    BaseCounter
+  },
   data() {
     return {
-      count: 10,
-      counterTitle: 'Counter Standard',
-      incrementAmount: 8,
       message: 'Hello it works',
       listOfNumbers: [
         {
@@ -39,31 +41,20 @@ export default {
 </script>
 
 <template>
-  <h1>{{ displayTitle }}</h1>
-  <p :data-increment-by="incrementAmount">{{ count }}</p>
-  <button @click="incrementCount">Increment Count</button>
-  <h1>{{ incrementAmount }}</h1>
-  <p>{{ optimizedIncrementAmount }}</p>
-  <div>
-    <label for="incrementAmount">Increment by:</label>
-    <input
-      type="text"
-      v-model="incrementAmount"
-    />
-  </div>
+  <base-counter />
   <hr />
   <p v-if="message.length % 2 === 0">Even: {{ message.toUpperCase() }}</p>
   <p v-else>Odd: {{ message }}</p>
   <ul
     v-for="(item, index) in listOfNumbers"
-    v-bind:key="`item-${index}`"
+    :key="`item-${index}`"
   >
     <li>
       {{ item.id }}
       <ul>
         <li
           v-for="(number, index) in item.list"
-          v-bind:key="`number-${index}`"
+          :key="`number-${index}`"
         >
           {{ number }}
         </li>
@@ -71,5 +62,3 @@ export default {
     </li>
   </ul>
 </template>
-
-<style scoped></style>
