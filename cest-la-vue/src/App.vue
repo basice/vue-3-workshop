@@ -23,6 +23,9 @@ export default {
     },
     showLoginPage() {
       this.currentPage = 'Login'
+    },
+    showUsersPage() {
+      this.currentPage = 'Users'
     }
   }
 }
@@ -46,6 +49,11 @@ export default {
         href="#"
         @click.prevent="showLoginPage"
         >Login</a
+      >
+      <a
+        href="#"
+        @click.prevent="showUsersPage"
+        >Users</a
       >
     </nav>
   </header>
