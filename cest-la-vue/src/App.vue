@@ -1,14 +1,16 @@
 <script>
 import HomePage from './components/HomePage.vue'
 import LoginPage from './components/LoginPage.vue'
+import UsersPage from './components/UsersPage.vue'
 
 export default {
   components: {
     HomePage,
-    LoginPage
+    LoginPage,
+    UsersPage
   },
   data: () => ({
-    currentPage: 'Home'
+    currentPage: 'Users'
   }),
   computed: {
     renderPage() {
@@ -28,10 +30,23 @@ export default {
 
 <template>
   <header class="header">
-    <span class="logo"> <img src="@/assets/vue-heart.png" width="30" />C'est La Vue </span>
+    <span class="logo">
+      <img
+        src="@/assets/vue-heart.png"
+        width="30"
+      />C'est La Vue
+    </span>
     <nav class="nav">
-      <a href="#" @click.prevent="showHomePage">Home</a>
-      <a href="#" @click.prevent="showLoginPage">Login</a>
+      <a
+        href="#"
+        @click.prevent="showHomePage"
+        >Home</a
+      >
+      <a
+        href="#"
+        @click.prevent="showLoginPage"
+        >Login</a
+      >
     </nav>
   </header>
   <component :is="renderPage"></component>
