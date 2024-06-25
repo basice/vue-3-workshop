@@ -57,7 +57,12 @@ export default {
       >
     </nav>
   </header>
-  <component :is="renderPage"></component>
+
+  <Suspense>
+    <component :is="renderPage"></component>
+
+    <template v-slot:fallback> Data is loading... </template>
+  </Suspense>
 </template>
 
 <style>
