@@ -15,6 +15,8 @@
     </nav>
   </header>
 
+  <p>This is a new message!</p>
+
   <Suspense>
     <router-view />
 
