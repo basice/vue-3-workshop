@@ -1,7 +1,7 @@
 <script setup>
 import UserCard from '@/components/UserCard.vue'
 import { defineProps } from 'vue'
-import { userList } from '@/composables/useUserStore'
+import { useUserStore } from '@/stores/UserStore'
 
 defineProps({
   title: {
@@ -11,15 +11,9 @@ defineProps({
 })
 
 defineEmits(['update-user-list'])
+const userStore = useUserStore()
 
-async function fetchUsers() {
-  const response = await fetch('https://jsonplaceholder.typicode.com/users').then((response) =>
-    response.json()
-  )
-  return response
-}
-
-userList.value = await fetchUsers()
+userStore.fetchUsers()
 </script>
 
 <template>
@@ -27,7 +21,7 @@ userList.value = await fetchUsers()
     <h1>{{ title }}</h1>
     <ul>
       <UserCard
-        v-for="user in userList"
+        v-for="user in userStore.userList"
         :user="user"
         :key="`user-${user.id}`"
       >
